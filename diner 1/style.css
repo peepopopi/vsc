@@ -14,8 +14,8 @@
       --wood-card: linear-gradient(rgba(30,32,26,.82), rgba(30,32,26,.88)), url("images/wood-planks.png") center/cover;
       --wood-card-pine: linear-gradient(rgba(30,32,26,.84), rgba(30,32,26,.9)), url("images/wood-pine-fence.jpg") center/cover;
       --wood-card-weathered: linear-gradient(rgba(30,32,26,.8), rgba(30,32,26,.87)), url("images/wood-weathered.jpg") center/cover;
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: "Segoe UI", Arial, sans-serif;
+      --serif: "Lobster", cursive;
+      --sans: "Roboto Slab", Georgia, serif;
       --wrap: 1220px;
       font-size: 18px;
     }
@@ -44,7 +44,7 @@
       border-radius: 8px;
     }
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2, .serif { font-family: var(--serif); font-weight: 500; }
+    h1, h2, h3, .serif { font-family: var(--serif); font-weight: 400; }
     h2 {
       margin-bottom: 15px;
       font-size: clamp(2.55rem, 5vw, 4rem);
@@ -88,7 +88,7 @@
     .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; text-decoration: none; }
     .brand-mark { width: 34px; height: 40px; color: var(--gold); }
     .brand-name { display: grid; line-height: 1.05; }
-    .brand-name strong { font: 600 1.25rem var(--serif); }
+    .brand-name strong { font: 1.25rem var(--serif); }
     .brand-name small { margin-top: 5px; color: rgba(251,247,238,.8); font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; }
     .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 30px); margin: 0; padding: 0; list-style: none; }
     .nav-links a { color: rgba(251,247,238,.88); font-size: .9rem; text-decoration: none; transition: color .2s; }
@@ -151,7 +151,7 @@
       clip-path: polygon(4% 0, 96% 0, 100% 10%, 97% 91%, 91% 100%, 8% 96%, 0 88%, 3% 12%);
       font: 1rem/1.3 var(--serif); transform: rotate(3deg);
     }
-    .hero-stamp strong { display: block; color: var(--gold); font-size: 1.2rem; font-weight: 500; }
+    .hero-stamp strong { display: block; color: var(--gold); font-size: 1.2rem; font-weight: 400; }
 
     .story-showcase {
       background:
@@ -164,7 +164,7 @@
     }
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(42px, 8vw, 105px); }
     .story-copy p { max-width: 560px; color: var(--muted); font-size: 1.2rem; line-height: 1.75; }
-    .story-copy .signature { margin: 27px 0 0; color: #e4aa7c; font: italic 1.35rem var(--serif); }
+    .story-copy .signature { margin: 27px 0 0; color: #e4aa7c; font: italic 1.2rem/1.75 var(--sans); }
     .story-visual { position: relative; min-height: 560px; }
     .story-visual img {
       position: relative; z-index: 1; width: 100%; height: 520px; object-fit: cover;
@@ -270,7 +270,7 @@
     .menu-card img { width: 100%; height: 230px; object-fit: cover; filter: sepia(.12) saturate(.9) contrast(1.04); }
     .menu-info { padding: 20px 20px 23px; }
     .menu-line { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-    .menu-line h3 { margin: 0; font: 600 1.35rem var(--serif); }
+    .menu-line h3 { margin: 0; font: 1.35rem var(--serif); }
     .price { flex: 0 0 auto; color: #edc777; font-size: 1rem; font-weight: 800; }
     .menu-info p { margin: 10px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.7; }
     .menu-footnote { margin: 24px 0 0; color: var(--muted); font-size: .98rem; line-height: 1.65; }
@@ -348,7 +348,7 @@
     .review-card:nth-child(2) { background: var(--wood-card-pine); }
     .review-card:nth-child(3) { background: var(--wood-card); }
     .stars { color: var(--gold); letter-spacing: .16em; }
-    .review-card blockquote { margin: 10px 0 12px; font: 1.2rem/1.6 var(--serif); }
+    .review-card blockquote { margin: 10px 0 12px; font: 1.08rem/1.7 var(--sans); }
     .review-card cite { color: #e0d2bb; font-size: .98rem; font-style: normal; }
     .sample-note { margin: 2px 0 0; color: var(--muted); font-size: .98rem; line-height: 1.65; }
 
