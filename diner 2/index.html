@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PineTree Diner — Придорожная закусочная в Орегоне</title>
+  <meta name="description" content="Атмосферная придорожная закусочная PineTree Diner в лесах Орегона. Домашняя еда, свежий кофе, фирменные пироги и тёплый уют после долгой дороги.">
+  
+  <!-- Подключение веб-шрифтов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --------------------------------------------------
+       1. ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ
+    -------------------------------------------------- */
+    :root {
+      --color-forest-dark: #122117;
+      --color-forest-medium: #1d3324;
+      --color-wood-brown: #3d271d;
+      --color-burgundy: #581c22;
+      --color-terracotta: #c85a32;
+      --color-amber-gold: #e5a93c;
+      --color-cream-bg: #f9f6f0;
+      --color-cream-card: #f2ebd9;
+      --color-text-dark: #221e1b;
+      --color-text-muted: #615750;
+      --color-text-light: #f5f0eb;
+      
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.18);
+      --shadow-dark: 0 12px 35px rgba(0, 0, 0, 0.4);
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-cream-bg);
+      color: var(--color-text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Доступность и фокусы */
+    :focus-visible {
+      outline: 3px solid var(--color-amber-gold);
+      outline-offset: 3px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* --------------------------------------------------
+       2. ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ И СЕТКА
+    -------------------------------------------------- */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-terracotta);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .section-title.light {
+      color: var(--color-text-light);
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      max-width: 650px;
+      margin: 0 auto 50px auto;
+    }
+
+    .section-subtitle.light {
+      color: #d1c7bd;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--color-terracotta);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(200, 90, 50, 0.35);
+    }
+
+    .btn-primary:hover {
+      background-color: #b04b26;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(200, 90, 50, 0.45);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text-light);
+      border-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-dark {
+      background-color: transparent;
+      color: var(--color-forest-dark);
+      border-color: var(--color-forest-dark);
+    }
+
+    .btn-outline-dark:hover {
+      background-color: var(--color-forest-dark);
+      color: var(--color-text-light);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------
+       3. HEADER И НАВИГАЦИЯ
+    -------------------------------------------------- */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+
+    .header.scrolled {
+      background-color: rgba(18, 33, 23, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 0;
+      box-shadow: var(--shadow-dark);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--color-text-light);
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--color-amber-gold);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-link {
+      color: #e0d8cf;
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-amber-gold);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Гамбургер-меню */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background-color: var(--color-text-light);
+      margin: 6px 0;
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    /* --------------------------------------------------
+       4. HERO-БЛОК
+    -------------------------------------------------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      background: linear-gradient(180deg, rgba(18, 33, 23, 0.75) 0%, rgba(18, 33, 23, 0.85) 100%),
+                  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+      color: var(--color-text-light);
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(229, 169, 60, 0.15);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      padding: 8px 16px;
+      border-radius: 30px;
+      color: var(--color-amber-gold);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 4.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #e2dad1;
+      margin-bottom: 35px;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .hero-info-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .hero-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #d1c7bd;
+    }
+
+    .hero-info-item svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--color-amber-gold);
+      flex-shrink: 0;
+    }
+
+    /* --------------------------------------------------
+       5. О КОМПАНИИ / О ПРОЕКТЕ
+    -------------------------------------------------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-image-main {
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      object-fit: cover;
+      height: 480px;
+      width: 100%;
+    }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: -25px;
+      right: -25px;
+      background-color: var(--color-burgundy);
+      color: var(--color-text-light);
+      padding: 25px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-hover);
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .about-image-badge .number {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--color-amber-gold);
+    }
+
+    .about-image-badge .text {
+      font-size: 0.85rem;
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+    }
+
+    .about-quote {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--color-forest-dark);
+      border-left: 4px solid var(--color-terracotta);
+      padding-left: 20px;
+      margin: 25px 0;
+    }
+
+    /* --------------------------------------------------
+       6. ПРЕИМУЩЕСТВА & TRIVIA NIGHT
+    -------------------------------------------------- */
+    .features {
+      background-color: #efe8da;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .feature-card {
+      background: var(--color-cream-bg);
+      padding: 35px 25px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(29, 51, 36, 0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-forest-dark);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover .feature-icon {
+      background-color: var(--color-forest-dark);
+      color: var(--color-amber-gold);
+    }
+
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Баннер Friday Trivia Night */
+    .trivia-banner {
+      background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-wood-brown) 100%);
+      border-radius: var(--radius-lg);
+      padding: 45px 50px;
+      color: var(--color-text-light);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      box-shadow: var(--shadow-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trivia-banner::after {
+      content: 'TRIVIA';
+      position: absolute;
+      right: -20px;
+      bottom: -30px;
+      font-family: var(--font-heading);
+      font-size: 10rem;
+      font-weight: 700;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .trivia-tag {
+      display: inline-block;
+      background-color: var(--color-amber-gold);
+      color: var(--color-forest-dark);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .trivia-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .trivia-desc {
+      font-size: 1rem;
+      color: #e0d8cf;
+      max-width: 600px;
+    }
+
+    /* --------------------------------------------------
+       7. МЕНЮИ БЛЮДА
+    -------------------------------------------------- */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-card {
+      background-color: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .menu-img-wrapper {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+    }
+
+    .menu-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .menu-card:hover .menu-img {
+      transform: scale(1.06);
+    }
+
+    .menu-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(18, 33, 23, 0.85);
+      color: var(--color-amber-gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      text-transform: uppercase;
+    }
+
+    .menu-body {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .menu-item-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+    }
+
+    .menu-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-terracotta);
+    }
+
+    .menu-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* --------------------------------------------------
+       8. АДРЕС И КАРТА
+    -------------------------------------------------- */
+    .location-section {
+      background-color: var(--color-forest-dark);
+      color: var(--color-text-light);
+      position: relative;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .location-info .section-title {
+      color: var(--color-text-light);
+    }
+
+    .location-details {
+      margin: 30px 0;
+    }
+
+    .location-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .location-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--color-amber-gold);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .location-item-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-amber-gold);
+      margin-bottom: 4px;
+    }
+
+    .location-item-desc {
+      color: #cbbfae;
+      font-size: 0.95rem;
+    }
+
+    .map-mockup {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(rgba(18, 33, 23, 0.4), rgba(18, 33, 23, 0.4)),
+                  url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      border-radius: var(--radius-md);
+      position: relative;
+      border: 2px solid rgba(229, 169, 60, 0.3);
+      box-shadow: var(--shadow-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-pin-card {
+      background: rgba(18, 33, 23, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 20px 25px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-amber-gold);
+      text-align: center;
+      box-shadow: var(--shadow-dark);
+      max-width: 280px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .map-pin-card svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--color-terracotta);
+      margin-bottom: 8px;
+    }
+
+    /* --------------------------------------------------
+       9. ОТЗЫВЫ И ПОЛЕЗНЫЕ СВЕДЕНИЯ
+    -------------------------------------------------- */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .review-card {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '“';
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      color: rgba(200, 90, 50, 0.15);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .review-stars {
+      color: var(--color-amber-gold);
+      display: flex;
+      gap: 4px;
+      margin-bottom: 15px;
+    }
+
+    .review-stars svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .review-text {
+      font-size: 0.98rem;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .review-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .review-author-name {
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      font-size: 0.95rem;
+    }
+
+    .review-author-meta {
+      font-size: 0.8rem;
+      color: #8c827a;
+    }
+
+    /* Дополнительные сведения для путеводцев */
+    .traveler-tips {
+      margin-top: 60px;
+      background-color: var(--color-cream-card);
+      border-radius: var(--radius-md);
+      padding: 30px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      border: 1px dashed var(--color-terracotta);
+    }
+
+    .traveler-tips-content h4 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-forest-dark);
+      margin-bottom: 6px;
+    }
+
+    .traveler-tips-content p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* --------------------------------------------------
+       10. КОНТАКТЫ
+    -------------------------------------------------- */
+    .contact-section {
+      background-color: #f0eae1;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+    }
+
+    .contact-info-box {
+      background-color: var(--color-forest-dark);
+      color: var(--color-text-light);
+      padding: 45px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-info-box h3 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--color-amber-gold);
+    }
+
+    .contact-info-list {
+      margin: 30px 0;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .contact-info-item svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--color-amber-gold);
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      background-color: #ffffff;
+      padding: 45px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      background-color: #faf8f5;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-terracotta);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(200, 90, 50, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* --------------------------------------------------
+       11. FOOTER
+    -------------------------------------------------- */
+    .footer {
+      background-color: #0b150e;
+      color: #9e9387;
+      padding: 70px 0 30px 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      max-width: 350px;
+      line-height: 1.6;
+    }
+
+    .footer-title {
+      color: var(--color-text-light);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-amber-gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* --------------------------------------------------
+       12. АДАПТИВНОСТЬ (MEDIA QUERIES)
+    -------------------------------------------------- */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 3.2rem;
+      }
+
+      .about-grid, .location-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image-badge {
+        right: 10px;
+        bottom: -20px;
+      }
+
+      .trivia-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .traveler-tips {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: var(--color-forest-dark);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-link {
+        font-size: 1.2rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1.05rem;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trivia-banner {
+        padding: 30px 20px;
+      }
+
+      .contact-form, .contact-info-box {
+        padding: 25px 20px;
+      }
+    }
+
+    /* Настройки для снижения движения (Accessibility) */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .map-pin-card {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================================================
+       1. HEADER И НАВИГАЦИЯ
+  ================================================== -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="#" class="logo" aria-label="PineTree Diner Главная">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L6 10h3v4H6l6 8 6-8h-3v-4h3L12 2z"/></svg>
+        <span>PineTree Diner</span>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Открыть меню навигации" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#about" class="nav-link">О нас</a>
+        <a href="#features" class="nav-link">Особенности</a>
+        <a href="#menu" class="nav-link">Меню</a>
+        <a href="#location" class="nav-link">Где мы</a>
+        <a href="#reviews" class="nav-link">Отзывы</a>
+        <a href="#contact" class="btn btn-primary nav-btn">Найти дорогу</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================================================
+       2. HERO-БЛОК
+  ================================================== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Трасса US-26, штат Орегон
+        </div>
+        <h1 class="hero-title">Уютный приют среди вековых сосен Орегона</h1>
+        <p class="hero-description">
+          Место для тех, кого одиночество начинает тяготить. Горячий сытный обед, ароматный заварной кофе и тихий отдых после сотен миль лесной дороги.
+        </p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">
+            Смотреть меню
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#location" class="btn btn-secondary">Проложить маршрут</a>
+        </div>
+        <div class="hero-info-bar">
+          <div class="hero-info-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            Открыты ежедневно: 06:00 – 23:00
+          </div>
+          <div class="hero-info-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Домашняя кухня с 1978 года
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       3. О КОМПАНИИ / О ПРОЕКТЕ
+  ================================================== -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Интерьер закусочной PineTree Diner" class="about-image-main" loading="lazy">
+          <div class="about-image-badge">
+            <div class="number">45+</div>
+            <div class="text">Лет согреваем путешественников</div>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-tag">Наша история</span>
+          <h2 class="section-title">Остановка, где время замедляет свой ход</h2>
+          <p>
+            PineTree Diner был основан в 1978 году семьёй Миллер прямо на опушке национального леса Орегона. Мы задумывали это место не просто как точку питательной остановки, а как тёплый дом для дальнобойщиков, искателей приключений и местных жителей.
+          </p>
+          <div class="about-quote">
+            «Свежий запах сосновой хвои за окном и аромат свежеиспечённого черничного пирога внутри — это то, ради чего стоит притормозить».
+          </div>
+          <p>
+            За четыре десятилетия у нас почти ничего не изменилось: всё те же мягкие кожаные диванчики, виниловый проигрыватель в углу и рецепты домашней еды, передающиеся без изменений. Мы сотрудничаем с фермерами из окрестных долин, чтобы подавать всё самое свежее.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       4. ПРЕИМУЩЕСТВА & FRIDAY TRIVIA NIGHT
+  ================================================== -->
+  <section class="section-padding features" id="features">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Почему выбирают нас</span>
+        <h2 class="section-title">Уют и традиция Орегона</h2>
+        <p class="section-subtitle">Простые вещи, которые делают дальнюю дорогу легче, а вечер — теплее.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41 9.77-9.75z"/></svg>
+          </div>
+          <h3 class="feature-title">Домашняя кухня</h3>
+          <p class="feature-desc">Никаких полуфабрикатов. Густые супы, сытные бургеры и выпечка готовятся на нашей кухне каждое утро.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-5.45 9-12V5l-9-3zm-2 16l-4-4 1.41-1.41L10 15.17l6.59-6.59L18 10l-8 8z"/></svg>
+          </div>
+          <h3 class="feature-title">Местные продукты</h3>
+          <p class="feature-desc">Фермерское мясо, свежие лесные ягоды и экологически чистая продукция тихоокеанского северо-запада.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm1 11h-2v-2h2v2z"/></svg>
+          </div>
+          <h3 class="feature-title">Душевный прием</h3>
+          <p class="feature-desc">Уютная атмосфера, вежливое обслуживание и всегда горячий кофе, который подливают без лишних слов.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+          </div>
+          <h3 class="feature-title">Удобный паркинг</h3>
+          <p class="feature-desc">Просторная стоянка для легковых авто, кемперов и большегрузов прямо у лесной трассы.</p>
+        </div>
+      </div>
+
+      <!-- Викторины по пятницам -->
+      <div class="trivia-banner">
+        <div>
+          <span class="trivia-tag">Каждую пятницу • 19:00</span>
+          <h3 class="trivia-title">Friday Trivia Night (Вечер Викторин)</h3>
+          <p class="trivia-desc">
+            Путешествуете в одиночку или с друзьями? Присоединяйтесь к нашей традиционной интеллектуальной викторине! Это отличный шанс завести новые знакомства, узнать байки штата Орегон и выиграть фирменный пирог от шефа.
+          </p>
+        </div>
+        <div>
+          <a href="#contact" class="btn btn-primary" style="background-color: var(--color-amber-gold); color: var(--color-forest-dark);">Забронировать стол</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       5. ОСНОВНЫЕ ТОВАРЫ И ПРЕДЛОЖЕНИЯ (МЕНЮ)
+  ================================================== -->
+  <section class="section-padding" id="menu">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Наши фирменные блюда</span>
+        <h2 class="section-title">Меню придорожной кухни</h2>
+        <p class="section-subtitle">Простые, сытные и бесконечно вкусные блюда, проверенные временем.</p>
+      </div>
+
+      <div class="menu-grid">
+        <!-- Блюдо 1 -->
+        <article class="menu-card">
+          <div class="menu-img-wrapper">
+            <span class="menu-badge">Хит продаж</span>
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Timber Burger" class="menu-img" loading="lazy">
+          </div>
+          <div class="menu-body">
+            <div class="menu-header">
+              <h3 class="menu-item-title">Timber Burger</h3>
+              <span class="menu-price">$14.50</span>
+            </div>
+            <p class="menu-desc">Сочная котлета из орегонской говядины, выдержанный чеддер, хрустящий бекон, луковые кольца и фирменный соус на румяной булочке бриошь.</p>
+          </div>
+        </article>
+
+        <!-- Блюдо 2 -->
+        <article class="menu-card">
+          <div class="menu-img-wrapper">
+            <span class="menu-badge">Согревающий</span>
+            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80" alt="Лесной грибной суп" class="menu-img" loading="lazy">
+          </div>
+          <div class="menu-body">
+            <div class="menu-header">
+              <h3 class="menu-item-title">Суп дня «Лесной»</h3>
+              <span class="menu-price">$8.00</span>
+            </div>
+            <p class="menu-desc">Густой крем-суп из диких орегонских лисичек и белых грибов, со сливками, чесночными сухариками и свежей зеленью.</p>
+          </div>
+        </article>
+
+        <!-- Блюдо 3 -->
+        <article class="menu-card">
+          <div class="menu-img-wrapper">
+            <span class="menu-badge">Легенда PineTree</span>
+            <img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?auto=format&fit=crop&w=600&q=80" alt="Черничный пирог" class="menu-img" loading="lazy">
+          </div>
+          <div class="menu-body">
+            <div class="menu-header">
+              <h3 class="menu-item-title">Черничный пирог</h3>
+              <span class="menu-price">$6.50</span>
+            </div>
+            <p class="menu-desc">Знаменитый домашний пирог со свежими ягодами лесной черники по секретному семейному рецепту 1978 года. Подается теплым с шариком ванильного мороженого.</p>
+          </div>
+        </article>
+
+        <!-- Блюдо 4 -->
+        <article class="menu-card">
+          <div class="menu-img-wrapper">
+            <span class="menu-badge">Безлимит</span>
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Кофе Diner Blend" class="menu-img" loading="lazy">
+          </div>
+          <div class="menu-body">
+            <div class="menu-header">
+              <h3 class="menu-item-title">Кофе «Diner Blend»</h3>
+              <span class="menu-price">$3.50</span>
+            </div>
+            <p class="menu-desc">Классический фильтр-кофе темной обжарки с нотами ореха и шоколада. Бесплатное наполнение чашки при заказе любого главного блюда.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       6. АДРЕС И КАРТА
+  ================================================== -->
+  <section class="section-padding location-section" id="location">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location-info">
+          <span class="section-tag" style="color: var(--color-amber-gold);">Как нас найти</span>
+          <h2 class="section-title light">Ориентир — высокий сосновый бор</h2>
+          <p style="color: #cbbfae;">
+            Мы находимся прямо на съезде с живописной трассы US-26, неподалеку от подножия горы Худ. Вы точно не пропустите нашу неоновую вывеску со светящейся сосной.
+          </p>
+
+          <div class="location-details">
+            <div class="location-item">
+              <svg class="location-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <div>
+                <div class="location-item-title">Адрес (демонстрационный)</div>
+                <div class="location-item-desc">74200 Hwy 26, Rhododendron, OR 97049, США</div>
+              </div>
+            </div>
+
+            <div class="location-item">
+              <svg class="location-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              <div>
+                <div class="location-item-title">Режим работы</div>
+                <div class="location-item-desc">Понедельник — Воскресенье: 06:00 – 23:00</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Открыть в Google Maps
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+
+        <div class="map-mockup">
+          <div class="map-pin-card">
+            <svg viewBox="0 0 24 24"><path d="M12 2L6 10h3v4H6l6 8 6-8h-3v-4h3L12 2z"/></svg>
+            <h4 style="color: #fff; font-family: var(--font-heading); font-size: 1.2rem;">PineTree Diner</h4>
+            <p style="color: #cbbfae; font-size: 0.85rem; margin-top: 4px;">Milepost 42, US-26</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       7. ОТЗЫВЫ И ДОПОЛНИТЕЛЬНЫЕ СВЕДЕНИЯ
+  ================================================== -->
+  <section class="section-padding" id="reviews">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Истории путников</span>
+        <h2 class="section-title">Что говорят наши гости</h2>
+        <p class="section-subtitle">Несколько впечатлений от тех, кто заглянул к нам на огонёк во время поездки.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Отзыв 1 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">«Ехали сквозь туман и проливной дождь. PineTree Diner возник буквально из ниоткуда как спасительный маяк. Лучший черничный пирог, что я пробовал в жизни, и невероятно тёплый прием!»</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Алексей К." class="review-avatar">
+            <div>
+              <div class="review-author-name">Алексей К.</div>
+              <div class="review-author-meta">Автопутешественник • Пример отзыва</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Отзыв 2 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">«Попали на Friday Trivia Night совершенно случайно. Познакомились с местными лесниками и другими туристами, отлично провели вечер! Обязательно закажите Timber Burger.»</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Елена М." class="review-avatar">
+            <div>
+              <div class="review-author-name">Елена М.</div>
+              <div class="review-author-meta">Фотограф • Пример отзыва</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Отзыв 3 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="review-text">«Езжу по трассе US-26 каждую неделю по работе. PineTree Diner — моя обязательная точка для отдыха. Атмосфера старой Америки, всегда свежий кофе и приветливый персонал.»</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Дмитрий В." class="review-avatar">
+            <div>
+              <div class="review-author-name">Дмитрий В.</div>
+              <div class="review-author-meta">Водитель • Пример отзыва</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Заметка для путешественников -->
+      <div class="traveler-tips">
+        <div class="traveler-tips-content">
+          <h4>Заметка для автопутешественников</h4>
+          <p>У нас есть бесплатный Wi-Fi, розетки возле каждого столика и чистые душевые комнаты для тех, кто находится в действительно долгом пути.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline-dark" style="flex-shrink: 0;">Узнать больше</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       8. КОНТАКТЫ
+  ================================================== -->
+  <section class="section-padding contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <div>
+            <h3>Загляните к нам или напишите</h3>
+            <p style="color: #d1c7bd;">Если у вас есть вопросы по бронированию больших столов или проведению мероприятий, свяжитесь с нами.</p>
+            
+            <div class="contact-info-list">
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>+1 (503) 555-0198 (Демо)</span>
+              </div>
+
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>hello@pinetreediner-demo.com</span>
+              </div>
+
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span>Открыты 365 дней в году</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #a39688;">
+            * Все указанные данные являются демонстрационными для презентации лендинга.
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-forest-dark); margin-bottom: 20px;">Забронировать столик</h3>
+          <form id="diner-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="name" class="form-label">Ваше имя</label>
+              <input type="text" id="name" class="form-control" placeholder="Иван Иванов" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label">Телефон или Email</label>
+              <input type="text" id="phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Сообщение или дата визита</label>
+              <textarea id="message" class="form-control" placeholder="Хотим заглянуть к вам в пятницу на Trivia Night..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить сообщение</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       9. FOOTER
+  ================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L6 10h3v4H6l6 8 6-8h-3v-4h3L12 2z"/></svg>
+            <span>PineTree Diner</span>
+          </a>
+          <p>
+            Уютная придорожная закусочная в лесах Орегона. Домашняя кухня, свежий кофе и тепло для каждого путешественника с 1978 года.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Быстрые ссылки</h4>
+          <ul class="footer-links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#features">Особенности</a></li>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Информация</h4>
+          <ul class="footer-links">
+            <li><a href="#location">Трасса US-26, Орегон</a></li>
+            <li><a href="#location">Часы работы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+            <li><a href="#">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 PineTree Diner. Все права защищены.</div>
+        <div>Адаптивный лендинг придорожного кафе</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================================================
+       10. JAVASCRIPT (Интерактив)
+  ================================================== -->
+  <script>
+    // 1. Изменение шапки при прокрутке
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // 2. Мобильное гамбургер-меню
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    hamburger.addEventListener('click', () => {
+      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !isExpanded);
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Закрытие меню при клике на ссылку
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // 3. Простая обработка формы
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert('Спасибо за ваше сообщение! Мы будем рады видеть вас в PineTree Diner.');
+      document.getElementById('diner-form').reset();
+    }
+  </script>
+</body>
+</html>
