@@ -10,6 +10,10 @@
       --terra: #c77958;
       --gold: #dfb86e;
       --line: rgba(244, 232, 210, .2);
+      --section-trim: repeating-linear-gradient(90deg, var(--terra) 0 42px, var(--gold) 42px 44px, transparent 44px 70px);
+      --wood-card: linear-gradient(rgba(30,32,26,.82), rgba(30,32,26,.88)), url("images/wood-planks.png") center/cover;
+      --wood-card-pine: linear-gradient(rgba(30,32,26,.84), rgba(30,32,26,.9)), url("images/wood-pine-fence.jpg") center/cover;
+      --wood-card-weathered: linear-gradient(rgba(30,32,26,.8), rgba(30,32,26,.87)), url("images/wood-weathered.jpg") center/cover;
       --serif: Georgia, "Times New Roman", serif;
       --sans: "Segoe UI", Arial, sans-serif;
       --wrap: 1220px;
@@ -120,9 +124,14 @@
         url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90") center/cover;
     }
     .hero::after {
-      content: ""; position: absolute; inset: auto 0 0; height: 8px;
-      background: repeating-linear-gradient(90deg, var(--terra) 0 42px, var(--gold) 42px 44px, transparent 44px 70px);
+      content: ""; position: absolute; inset: auto 0 0; height: 12px;
+      background: var(--section-trim);
       opacity: .85;
+    }
+    .story-showcase > section, main > section:not(.hero) { position: relative; }
+    .story-showcase > section::after, main > section:not(.hero)::after {
+      content: ""; position: absolute; z-index: 3; inset: auto 0 0; height: 12px;
+      background: var(--section-trim); opacity: .9;
     }
     .hero-content { position: relative; z-index: 1; max-width: 720px; padding: 95px 0 115px; }
     .hero .eyebrow { color: #f4d296; }
@@ -134,26 +143,31 @@
     .hero-note::before { content: ""; width: 36px; height: 1px; background: var(--gold); }
     .hero-stamp {
       position: absolute; right: max(4vw, calc((100vw - var(--wrap))/2)); bottom: 76px;
-      width: 135px; height: 135px; display: grid; place-content: center; text-align: center;
-      border: 1px solid rgba(255,255,255,.65); border-radius: 50%;
-      color: white; background: rgba(67,47,30,.45);
-      box-shadow: inset 0 0 0 5px rgba(255,255,255,.08);
-      font: 1rem/1.3 var(--serif); transform: rotate(9deg);
+      width: 178px; min-height: 112px; display: grid; align-content: center; text-align: center;
+      padding: 16px 20px;
+      border: 2px solid rgba(239,207,145,.78);
+      color: #fff4dc; background: var(--wood-card-weathered);
+      box-shadow: inset 0 0 0 4px rgba(255,239,207,.13), 0 12px 26px rgba(0,0,0,.38);
+      clip-path: polygon(4% 0, 96% 0, 100% 10%, 97% 91%, 91% 100%, 8% 96%, 0 88%, 3% 12%);
+      font: 1rem/1.3 var(--serif); transform: rotate(3deg);
     }
     .hero-stamp strong { display: block; color: var(--gold); font-size: 1.2rem; font-weight: 500; }
 
+    .story-showcase {
+      background:
+        linear-gradient(112deg, rgba(25,29,23,.82), rgba(30,30,25,.72)),
+        url("images/story-background.png") center 48%/cover;
+    }
     .story {
       padding: 112px 0 105px;
-      background:
-        linear-gradient(112deg, rgba(33,29,24,.9), rgba(42,39,31,.88)),
-        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85") center/cover;
+      background: none;
     }
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(42px, 8vw, 105px); }
     .story-copy p { max-width: 560px; color: var(--muted); font-size: 1.2rem; line-height: 1.75; }
     .story-copy .signature { margin: 27px 0 0; color: #e4aa7c; font: italic 1.35rem var(--serif); }
-    .story-visual { position: relative; min-height: 470px; }
+    .story-visual { position: relative; min-height: 560px; }
     .story-visual img {
-      position: relative; z-index: 1; width: 82%; height: 420px; object-fit: cover;
+      position: relative; z-index: 1; width: 100%; height: 520px; object-fit: cover;
       border-radius: 24px 11px 27px 13px; box-shadow: 0 16px 38px rgba(0,0,0,.34);
       filter: sepia(.22) saturate(.78) contrast(1.04) brightness(.82);
     }
@@ -180,9 +194,7 @@
 
     .memory-strip {
       padding: 0 0 100px;
-      background:
-        linear-gradient(115deg, rgba(126,76,43,.18), rgba(48,42,35,.86)),
-        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=85") center/cover;
+      background: none;
     }
     .memory-grid { display: grid; grid-template-columns: 1.15fr .85fr 1fr; gap: 18px; }
     .memory-shot {
@@ -199,18 +211,6 @@
     .memory-shot img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.12) saturate(.9) contrast(1.06) brightness(.85); transition: transform .6s; }
     .memory-shot:hover img { transform: scale(1.045); }
     .memory-shot figcaption { position: absolute; z-index: 1; left: 20px; bottom: 18px; color: #fff0d8; font: 1.2rem var(--serif); }
-    .archive-credit {
-      margin: 18px auto 32px; padding: 22px 24px;
-      border: 1px solid rgba(223,184,110,.25); border-radius: 18px 8px 20px 10px;
-      color: #e2d0b1; font-size: .98rem; line-height: 1.65;
-      background:
-        repeating-linear-gradient(7deg, rgba(255,235,195,.035) 0 1px, transparent 1px 7px),
-        repeating-linear-gradient(91deg, #44372a 0 3px, #51402f 3px 7px, #3b3026 7px 12px),
-        #44372a;
-      box-shadow: 0 10px 24px rgba(0,0,0,.2);
-    }
-    .archive-credit a { color: #f0cc83; text-underline-offset: 3px; }
-    .archive-credit a:hover { color: white; }
 
     .benefits {
       padding: 100px 0; color: var(--ink);
@@ -224,13 +224,12 @@
     .benefit-card {
       min-height: 240px; padding: 30px;
       border: 1px solid rgba(223,184,110,.27); border-radius: 24px 11px 27px 13px;
-      background:
-        linear-gradient(145deg, rgba(223,184,110,.07), transparent 55%),
-        repeating-linear-gradient(6deg, rgba(255,245,220,.025) 0 1px, transparent 1px 8px),
-        rgba(30,43,33,.9);
+      background: var(--wood-card-pine);
       box-shadow: 0 12px 24px rgba(0,0,0,.18);
       transition: background .25s, transform .25s;
     }
+    .benefit-card:nth-child(3n+2) { background: var(--wood-card-weathered); }
+    .benefit-card:nth-child(3n) { background: var(--wood-card); }
     .benefit-card:hover { transform: translateY(-4px); }
     .icon-box {
       width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 23px;
@@ -244,9 +243,7 @@
       margin-top: 28px; padding: 23px 27px;
       border-left: 3px solid var(--terra); border-radius: 24px 11px 27px 13px;
       color: var(--ink);
-      background:
-        repeating-linear-gradient(5deg, rgba(255,245,220,.03) 0 1px, transparent 1px 8px),
-        rgba(255,255,255,.08);
+      background: var(--wood-card-weathered);
     }
     .trivia-bar p { margin: 0; color: rgba(255,249,235,.94); font-size: 1.08rem; }
     .trivia-bar strong { color: white; }
@@ -263,13 +260,12 @@
     .menu-card {
       min-width: 0; overflow: hidden; border: 1px solid rgba(223,184,110,.25);
       border-radius: 24px 11px 27px 13px;
-      background:
-        linear-gradient(135deg, rgba(230,196,131,.055), transparent 42%),
-        repeating-linear-gradient(4deg, rgba(255,244,220,.018) 0 1px, transparent 1px 7px),
-        rgba(41,35,28,.96);
+      background: var(--wood-card);
       box-shadow: 0 12px 28px rgba(0,0,0,.28);
       transition: transform .25s, box-shadow .25s;
     }
+    .menu-card:nth-child(3n+2) { background: var(--wood-card-weathered); }
+    .menu-card:nth-child(3n) { background: var(--wood-card-pine); }
     .menu-card:hover { transform: translateY(-6px); box-shadow: 0 16px 38px rgba(0,0,0,.4); }
     .menu-card img { width: 100%; height: 230px; object-fit: cover; filter: sepia(.12) saturate(.9) contrast(1.04); }
     .menu-info { padding: 20px 20px 23px; }
@@ -291,12 +287,26 @@
     .roadside .eyebrow { color: var(--gold); }
     .roadside h2 { max-width: 600px; }
     .roadside p { max-width: 560px; color: rgba(255,255,255,.92); font-size: 1.2rem; }
+    .direction-marker { position: relative; display: inline-flex; padding-bottom: 30px; }
+    .direction-sign {
+      position: relative; z-index: 1; min-width: 225px; min-height: 74px; padding: 0 34px 0 24px;
+      border: 2px solid rgba(239,207,145,.8); border-radius: 0; color: #fff4dc;
+      background: var(--wood-card);
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,.38));
+      clip-path: polygon(0 8%, 83% 8%, 100% 50%, 83% 92%, 0 92%, 5% 50%);
+      font: 600 1.05rem var(--serif);
+    }
+    .direction-sign:hover { color: white; background-color: #795337; }
+    .direction-post {
+      position: absolute; z-index: 0; top: 48px; left: 48%; width: 18px; height: 56px;
+      border: 1px solid rgba(239,207,145,.45);
+      background: var(--wood-card-weathered);
+      box-shadow: 0 8px 14px rgba(0,0,0,.28);
+      transform: translateX(-50%);
+    }
     .address-card {
       padding: 30px; border: 1px solid rgba(255,255,255,.27); border-radius: 24px 11px 27px 13px;
-      background:
-        repeating-linear-gradient(4deg, rgba(246,222,177,.025) 0 1px, transparent 1px 8px),
-        linear-gradient(145deg, rgba(164,112,65,.13), transparent 58%),
-        rgba(38,42,32,.94);
+      background: var(--wood-card-pine);
       backdrop-filter: blur(4px);
     }
     .address-card h3 { margin-bottom: 12px; color: #fff0d9; font: 1.5rem var(--serif); }
@@ -321,10 +331,7 @@
     .details-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; }
     .hours-card {
       padding: 30px; border: 1px solid rgba(223,184,110,.25); border-radius: 24px 11px 27px 13px;
-      background:
-        repeating-linear-gradient(4deg, rgba(246,222,177,.025) 0 1px, transparent 1px 8px),
-        linear-gradient(145deg, rgba(164,112,65,.13), transparent 58%),
-        rgba(38,42,32,.94);
+      background: var(--wood-card-weathered);
       box-shadow: 0 16px 38px rgba(0,0,0,.34);
     }
     .hours-card h3 { margin-bottom: 21px; font: 1.6rem var(--serif); }
@@ -335,10 +342,10 @@
     .reviews { display: grid; gap: 16px; }
     .review-card {
       padding: 24px 27px; border-top: 4px solid var(--gold); border-radius: 24px 11px 27px 13px;
-      background:
-        repeating-linear-gradient(4deg, rgba(246,222,177,.025) 0 1px, transparent 1px 8px),
-        rgba(67,54,39,.9);
+      background: var(--wood-card-weathered);
     }
+    .review-card:nth-child(2) { background: var(--wood-card-pine); }
+    .review-card:nth-child(3) { background: var(--wood-card); }
     .stars { color: var(--gold); letter-spacing: .16em; }
     .review-card blockquote { margin: 10px 0 12px; font: 1.2rem/1.6 var(--serif); }
     .review-card cite { color: #e0d2bb; font-size: .98rem; font-style: normal; }
@@ -353,10 +360,7 @@
     .contact-panel {
       display: grid; grid-template-columns: 1.05fr .95fr; gap: 50px; align-items: center;
       padding: clamp(28px,5vw,58px); border-radius: 24px 11px 27px 13px; color: #fffaf1;
-      background:
-        repeating-linear-gradient(5deg, rgba(255,240,215,.025) 0 1px, transparent 1px 8px),
-        linear-gradient(115deg, rgba(97,55,45,.94), rgba(82,49,38,.91)),
-        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&q=80") center/cover;
+      background: var(--wood-card-weathered);
       box-shadow: 0 18px 44px rgba(0,0,0,.3);
     }
     .contact h2 { max-width: 520px; margin: 15px 0; }
@@ -421,7 +425,7 @@
       .hero-content { padding: 78px 0 115px; }
       .hero h1 { font-size: clamp(3.35rem, 12vw, 5.1rem); }
       .hero-copy, .section-intro, .story-copy p, .roadside p, .contact-copy { font-size: 1.12rem; }
-      .hero-stamp { right: 24px; bottom: 30px; width: 110px; height: 110px; font-size: .84rem; }
+      .hero-stamp { right: 24px; bottom: 30px; width: 150px; min-height: 96px; padding: 12px 16px; font-size: .84rem; }
       .hero-stamp strong { font-size: 1rem; }
       .story, .menu-section, .details { padding: 78px 0; }
       .story-grid { grid-template-columns: 1fr; gap: 37px; }
@@ -470,7 +474,6 @@
       .memory-grid { grid-template-columns: 1fr; }
       .memory-shot, .memory-shot:first-child { grid-column: auto; height: 230px; }
       .address-card, .hours-card { padding: 23px 20px; }
-      .archive-credit { padding: 18px; }
       .review-card { padding: 20px; }
       .contact-panel { padding: 26px 21px; }
       .contact-link { padding: 13px 12px; }
