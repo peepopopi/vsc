@@ -123,8 +123,8 @@
       position: relative; min-height: min(790px, calc(100svh - 76px));
       display: flex; align-items: center; overflow: hidden; color: white;
       background:
-        linear-gradient(90deg, rgba(20,24,18,.72), rgba(20,24,18,.31) 58%, rgba(20,24,18,.12)),
-        linear-gradient(0deg, rgba(20,24,18,.72), transparent 53%),
+        linear-gradient(90deg, rgba(20,24,18,.47), rgba(20,24,18,.06) 58%, transparent),
+        linear-gradient(0deg, rgba(20,24,18,.47), transparent 53%),
         url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90") center/cover;
     }
     .hero::after {
@@ -159,7 +159,7 @@
 
     .story-showcase {
       background:
-        linear-gradient(112deg, rgba(25,29,23,.82), rgba(30,30,25,.72)),
+        linear-gradient(112deg, rgba(25,29,23,.57), rgba(30,30,25,.47)),
         url("images/story-background.png") center 48%/cover;
     }
     .story {
@@ -259,8 +259,8 @@
     .menu-section {
       padding: 112px 0;
       background:
-        linear-gradient(rgba(43,38,30,.9), rgba(43,38,30,.94)),
-        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=85") center/cover;
+        linear-gradient(rgba(43,38,30,.68), rgba(43,38,30,.76)),
+        url("images/food-background.png") center 52%/cover;
     }
     .menu-top { display: flex; align-items: end; justify-content: space-between; gap: 25px; }
     .menu-top .section-head { margin-bottom: 0; }
@@ -288,8 +288,8 @@
     .roadside {
       padding: 104px 0; color: white;
       background:
-        linear-gradient(90deg, rgba(25,32,23,.84), rgba(25,32,23,.42)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=90") center 55%/cover;
+        linear-gradient(90deg, rgba(25,32,23,.68), rgba(25,32,23,.48)),
+        url("images/directions-background.png") center 62%/cover;
     }
     .roadside-grid { display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 70px; }
     .roadside .eyebrow { color: var(--gold); }
@@ -334,8 +334,8 @@
     .details {
       padding: 108px 0;
       background:
-        linear-gradient(rgba(35,32,26,.88), rgba(35,32,26,.9)),
-        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=85") center/cover;
+        linear-gradient(rgba(35,32,26,.75), rgba(35,32,26,.82)),
+        url("images/details-background.png") center 72%/cover;
     }
     .details-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; }
     .hours-card {
@@ -363,8 +363,8 @@
     .contact {
       padding: 89px 0;
       background:
-        linear-gradient(rgba(37,31,26,.65), rgba(37,31,26,.78)),
-        url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1800&q=85") center/cover;
+        linear-gradient(rgba(37,31,26,.62), rgba(37,31,26,.72)),
+        url("images/contact-background.png") center/cover;
     }
     .contact-panel {
       display: grid; grid-template-columns: 1.05fr .95fr; gap: 50px; align-items: center;
