@@ -123,8 +123,8 @@
       position: relative; min-height: min(790px, calc(100svh - 76px));
       display: flex; align-items: center; overflow: hidden; color: white;
       background:
-        linear-gradient(90deg, rgba(20,24,18,.47), rgba(20,24,18,.06) 58%, transparent),
-        linear-gradient(0deg, rgba(20,24,18,.47), transparent 53%),
+        linear-gradient(90deg, rgba(20,24,18,.62), rgba(20,24,18,.21) 58%, rgba(20,24,18,.15)),
+        linear-gradient(0deg, rgba(20,24,18,.62), transparent 53%),
         url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90") center/cover;
     }
     .hero::after {
@@ -159,8 +159,8 @@
 
     .story-showcase {
       background:
-        linear-gradient(112deg, rgba(25,29,23,.57), rgba(30,30,25,.47)),
-        url("images/story-background.png") center 48%/cover;
+        linear-gradient(112deg, rgba(104,61,75,.28), rgba(72,47,59,.2)),
+        url("images/story-mist-background.png") center/cover;
     }
     .story {
       padding: 112px 0 105px;
@@ -219,8 +219,8 @@
     .benefits {
       padding: 100px 0; color: var(--ink);
       background:
-        linear-gradient(rgba(28,39,30,.87), rgba(28,39,30,.92)),
-        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85") center/cover;
+        linear-gradient(rgba(28,39,30,.62), rgba(28,39,30,.67)),
+        url("images/story-background.png") center 48%/cover;
     }
     .benefits .eyebrow { color: var(--gold); }
     .benefits .section-intro { color: var(--muted); }
@@ -246,7 +246,7 @@
     .trivia-bar {
       display: flex; align-items: center; justify-content: space-between; gap: 24px;
       margin-top: 28px; padding: 23px 27px;
-      border: 3px solid var(--card-bark); border-radius: 24px 11px 27px 13px;
+      border: 3px solid #ff9a57; border-radius: 24px 11px 27px 13px;
       color: var(--ink);
       background:
         linear-gradient(rgba(30,24,18,.5), rgba(30,24,18,.58)),
@@ -259,7 +259,7 @@
     .menu-section {
       padding: 112px 0;
       background:
-        linear-gradient(rgba(43,38,30,.68), rgba(43,38,30,.76)),
+        linear-gradient(rgba(43,38,30,.58), rgba(43,38,30,.66)),
         url("images/food-background.png") center 52%/cover;
     }
     .menu-top { display: flex; align-items: end; justify-content: space-between; gap: 25px; }
@@ -295,21 +295,26 @@
     .roadside .eyebrow { color: var(--gold); }
     .roadside h2 { max-width: 600px; }
     .roadside p { max-width: 560px; color: rgba(255,255,255,.92); font-size: 1.2rem; }
-    .direction-marker { position: relative; display: inline-flex; width: calc(90% - 60px); padding-bottom: 30px; }
+    .direction-marker { position: relative; display: inline-flex; width: min(280px, 100%); padding-bottom: 50px; }
+    .direction-sign-frame {
+      position: relative; z-index: 1;
+      display: flex; width: 100%; padding: 5px; background: #795b45;
+      clip-path: polygon(0 8%, 83% 8%, 100% 50%, 83% 92%, 0 92%, 5% 50%);
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,.55)) drop-shadow(0 0 3px rgba(75,52,39,.8));
+    }
     .direction-sign {
-      position: relative; z-index: 1; width: 100%; min-width: 0; min-height: 74px; padding: 0 34px 0 24px;
-      border: 5px solid #725334; border-radius: 0; color: #fff4dc;
+      position: relative; z-index: 1; width: 100%; min-width: 0; min-height: 96px; padding: 0 25px 0 18px;
+      border: 0; border-radius: 0; color: #fff4dc;
       background: var(--wood-card);
       box-shadow: inset 0 0 0 2px rgba(239,207,145,.38);
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,.55));
       clip-path: polygon(0 8%, 83% 8%, 100% 50%, 83% 92%, 0 92%, 5% 50%);
-      font: 600 1.05rem var(--serif);
+      font: 400 1.55rem var(--serif);
     }
     .direction-sign:hover { color: white; background-color: #795337; }
     .direction-post {
-      position: absolute; z-index: 0; top: 48px; left: 48%; width: 18px; height: 56px;
-      border: 1px solid rgba(239,207,145,.45);
-      background: var(--wood-card-weathered);
+      position: absolute; z-index: 0; top: 72px; left: 50%; width: 28px; height: 84px;
+      border: 2px solid #795b45;
+      background: linear-gradient(rgba(24,22,19,.76), rgba(24,22,19,.82)), url("images/wood-weathered.jpg") center/cover;
       box-shadow: 0 8px 14px rgba(0,0,0,.28);
       transform: translateX(-50%);
     }
@@ -334,7 +339,7 @@
     .details {
       padding: 108px 0;
       background:
-        linear-gradient(rgba(35,32,26,.75), rgba(35,32,26,.82)),
+        linear-gradient(rgba(35,32,26,.60), rgba(35,32,26,.67)),
         url("images/details-background.png") center 72%/cover;
     }
     .details-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; }
@@ -363,7 +368,7 @@
     .contact {
       padding: 89px 0;
       background:
-        linear-gradient(rgba(37,31,26,.62), rgba(37,31,26,.72)),
+        linear-gradient(rgba(37,31,26,.47), rgba(37,31,26,.57)),
         url("images/contact-background.png") center/cover;
     }
     .contact-panel {
@@ -394,7 +399,10 @@
     .benefit-card:nth-child(4n+2), .menu-card:nth-child(4n+2), .memory-shot:nth-child(4n+2), .review-card:nth-of-type(4n+2), .contact-link:nth-child(4n+2) { border-color: var(--card-pine); }
     .benefit-card:nth-child(4n+3), .menu-card:nth-child(4n+3), .memory-shot:nth-child(4n+3), .review-card:nth-of-type(4n+3), .contact-link:nth-child(4n+3) { border-color: var(--card-cedar); }
     .benefit-card:nth-child(4n), .menu-card:nth-child(4n), .memory-shot:nth-child(4n), .review-card:nth-of-type(4n), .contact-link:nth-child(4n) { border-color: var(--card-moss); }
-    .trivia-bar { border-color: var(--card-pine); }
+    .trivia-bar {
+      border-color: #ff9a57;
+      box-shadow: 0 0 8px rgba(255,145,75,.98), 0 0 24px rgba(255,102,49,.82), 0 0 52px rgba(255,78,37,.55), 0 0 88px rgba(255,70,32,.28), inset 0 0 22px rgba(255,178,99,.46);
+    }
     .hours-card, .contact-panel { border-color: var(--card-cedar); }
     .contact-link:hover { border-color: var(--gold); }
 
@@ -462,7 +470,6 @@
       .menu-info { padding: 17px 15px 20px; }
       .roadside { padding: 78px 0; }
       .roadside-grid { grid-template-columns: 1fr; gap: 34px; }
-      .direction-marker { width: calc(100% - 60px); }
       .details-grid { grid-template-columns: 1fr; gap: 32px; }
       .contact { padding: 65px 0; }
       .contact-panel { grid-template-columns: 1fr; gap: 28px; }
@@ -496,7 +503,6 @@
       .memory-grid { grid-template-columns: 1fr; }
       .memory-shot, .memory-shot:first-child { grid-column: auto; height: 230px; }
       .address-card, .hours-card { padding: 23px 20px; }
-      .direction-marker { width: calc(100% - 40px); }
       .review-card { padding: 20px; }
       .contact-panel { padding: 26px 21px; }
       .contact-link { padding: 13px 12px; }
