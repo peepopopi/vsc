@@ -498,8 +498,6 @@
       .wrap { width: min(var(--wrap), calc(100% - 32px)); }
       .nav-shell { min-height: 68px; }
       .brand-mark { width: 30px; height: 36px; }
-      .nav-toggle { position: absolute; top: 50%; right: 16px; display: grid; margin-left: 0; transform: translateY(-50%); }
-      .nav-cta { display: none; }
       .nav-links {
         position: absolute; top: calc(100% + 1px); left: 0; right: 0;
         display: none; align-items: stretch; gap: 0; padding: 8px 16px 16px;
