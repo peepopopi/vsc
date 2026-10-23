@@ -18,6 +18,9 @@
       --wood-card: linear-gradient(rgba(30,32,26,.82), rgba(30,32,26,.88)), url("images/wood-planks.png") center/cover;
       --wood-card-pine: linear-gradient(rgba(30,32,26,.84), rgba(30,32,26,.9)), url("images/wood-pine-fence.jpg") center/cover;
       --wood-card-weathered: linear-gradient(rgba(30,32,26,.8), rgba(30,32,26,.87)), url("images/wood-weathered.jpg") center/cover;
+      --wood-card-bark: linear-gradient(rgba(30,28,25,.72), rgba(30,28,25,.8)), url("images/bark-texture.png") center/cover;
+      --wood-card-bark-planks: linear-gradient(rgba(30,28,25,.72), rgba(30,28,25,.8)), url("images/bark-planks.png") center/cover;
+      --wood-card-growth-rings: linear-gradient(rgba(30,26,23,.78), rgba(30,26,23,.84)), url("images/wood-growth-rings.png") center/cover;
       --serif: "Lobster", cursive;
       --sans: "Roboto Slab", Georgia, serif;
       --wrap: 1220px;
