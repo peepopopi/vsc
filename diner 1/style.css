@@ -117,7 +117,7 @@
       position: relative; isolation: isolate;
       min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       padding: 0 23px; border: 1px solid transparent; border-radius: 999px;
-      color: var(--ink); background: #ad6549;
+      color: var(--ink); background: #a65f45;
       font-size: .98rem; font-weight: 750; text-decoration: none;
       transition: transform .2s, background .2s, box-shadow .2s; cursor: pointer;
     }
