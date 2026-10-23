@@ -79,7 +79,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      color: #fbf7ee;
+      color: var(--ink);
       background:
         repeating-linear-gradient(92deg, rgba(223,184,110,.035) 0 2px, transparent 2px 12px),
         linear-gradient(90deg, rgba(87,52,35,.3), transparent 55%),
@@ -472,6 +472,22 @@
       .nav-cta { padding-inline: 16px; }
     }
     @media (max-width: 920px) {
+      .nav-shell { min-height: 68px; }
+      .brand-mark { width: 30px; height: 36px; }
+      .nav-toggle { position: static; display: grid; flex: 0 0 auto; margin: 0; transform: none; }
+      .nav-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; margin-left: auto; }
+      .nav-links {
+        position: absolute; top: calc(100% + 1px); left: 0; right: 0;
+        display: none; align-items: stretch; gap: 0; padding: 8px 16px 16px;
+        background: var(--pine); border-bottom: 1px solid rgba(255,255,255,.16);
+        box-shadow: 0 16px 24px rgba(10,20,15,.2);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,.1); }
+      .nav-links li:last-child { border-bottom: 0; }
+      .nav-links li::after { display: none; }
+      .nav-links a::after { display: none; }
+      .nav-links a { display: block; padding: 13px 5px; font-size: 1rem; }
       .benefit-grid, .menu-grid { grid-template-columns: repeat(2,1fr); }
       .roadside-grid { gap: 35px; }
       .details-grid { gap: 40px; }
