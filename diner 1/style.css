@@ -105,18 +105,24 @@
     }
     .nav-toggle svg { width: 21px; }
     .button {
+      position: relative; isolation: isolate;
       min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       padding: 0 23px; border: 1px solid transparent; border-radius: 999px;
-      color: #fff7e9; background: var(--terra);
-      background-image: linear-gradient(145deg, rgba(255,238,195,.12), transparent 55%, rgba(67,38,24,.12));
+      color: #fff7e9; background: #ad6549;
       font-size: .98rem; font-weight: 750; text-decoration: none;
       transition: transform .2s, background .2s, box-shadow .2s; cursor: pointer;
     }
+    .button::before {
+      content: ""; position: absolute; z-index: -1; inset: 0;
+      border-radius: inherit; background: url("images/grainy-texture.png") center/500% 500%;
+      opacity: .52; mix-blend-mode: overlay; pointer-events: none;
+    }
     .button:hover { background-color: #8f4c38; box-shadow: 0 8px 20px rgba(197,109,76,.22); transform: translateY(-2px); }
     .button svg { width: 18px; height: 18px; }
-    .button-light { color: #282116; background-color: var(--gold); }
+    .button-light { color: #282116; background-color: #c7a052; }
     .button-light:hover { color: #282116; background-color: #edca85; }
-    .button-outline { border-color: rgba(255,255,255,.65); color: white; background: transparent; }
+    .button-outline { border-color: rgba(255,255,255,.65); color: white; background-color: rgba(20,25,19,.14); }
+    .button-outline::before { opacity: .4; mix-blend-mode: overlay; }
     .button-outline:hover { border-color: var(--gold); background: rgba(255,255,255,.08); }
 
     .hero {
@@ -255,6 +261,7 @@
     }
     .trivia-bar p { margin: 0; color: rgba(255,249,235,.94); font-size: 1.08rem; }
     .trivia-bar strong { color: white; }
+    .trivia-bar > .button { flex: 0 0 auto; white-space: nowrap; }
 
     .menu-section {
       padding: 112px 0;
