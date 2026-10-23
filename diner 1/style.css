@@ -157,6 +157,11 @@
     }
     .hero-stamp strong { display: block; color: var(--gold); font-size: 1.2rem; font-weight: 400; }
 
+    @media (min-width: 741px) {
+      .hero { min-height: min(740px, calc(100svh - 76px)); }
+      .hero-content { padding-bottom: 64px; }
+    }
+
     .story-showcase {
       background:
         linear-gradient(112deg, rgba(104,61,75,.28), rgba(72,47,59,.2)),
@@ -176,7 +181,7 @@
       filter: sepia(.22) saturate(.78) contrast(1.04) brightness(.82);
     }
     .story-visual::before {
-      content: ""; position: absolute; right: -20px; bottom: -18px; z-index: 0; width: 84%; height: 86%;
+      content: ""; position: absolute; right: -42px; bottom: -18px; z-index: 0; width: 84%; height: 86%;
       border-radius: 38% 8% 32% 6%;
       background:
         repeating-linear-gradient(7deg, #715436 0 3px, #886542 3px 7px, #62472f 7px 12px),
