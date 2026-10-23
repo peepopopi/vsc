@@ -114,7 +114,7 @@
       position: relative; isolation: isolate;
       min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       padding: 0 23px; border: 1px solid transparent; border-radius: 999px;
-      color: #fff7e9; background: #ad6549;
+      color: var(--ink); background: #ad6549;
       font-size: .98rem; font-weight: 750; text-decoration: none;
       transition: transform .2s, background .2s, box-shadow .2s; cursor: pointer;
     }
@@ -127,7 +127,7 @@
     .button svg { width: 18px; height: 18px; }
     .button-light { color: #282116; background-color: #c7a052; }
     .button-light:hover { color: #282116; background-color: #edca85; }
-    .button-outline { border-color: rgba(255,255,255,.65); color: white; background-color: rgba(20,25,19,.14); }
+    .button-outline { border-color: rgba(255,255,255,.65); color: var(--ink); background-color: rgba(20,25,19,.14); }
     .button-outline::before { opacity: .4; mix-blend-mode: overlay; }
     .button-outline:hover { border-color: var(--gold); background: rgba(255,255,255,.08); }
 
