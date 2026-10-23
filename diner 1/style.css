@@ -488,13 +488,14 @@
     @media (max-width: 480px) {
       :root { font-size: 16px; }
       .hero { min-height: min(690px, calc(100svh - 68px)); }
-      .hero-content { padding: 38px 0 36px; }
+      .hero-content { padding: 38px 0 120px; }
       .hero h1 { margin: 18px 0 16px; font-size: clamp(2.55rem, 10.5vw, 3.25rem); }
       .hero-copy { margin-bottom: 22px; font-size: 1rem; line-height: 1.55; }
       .hero-buttons { align-items: stretch; flex-direction: column; max-width: 310px; }
       .hero-buttons .button { width: 100%; }
       .hero-note { max-width: 270px; margin-top: 22px; font-size: .95rem; }
-      .hero-stamp { display: none; }
+      .hero-stamp { top: auto; right: 16px; bottom: 20px; width: 140px; min-height: 90px; padding: 10px 12px; font-size: .78rem; }
+      .hero-stamp strong { font-size: .95rem; }
       .section-head h2, .story-copy h2, .roadside h2, .details h2, .contact h2 { font-size: 2.6rem; }
       .benefit-grid, .menu-grid { grid-template-columns: 1fr; }
       .benefit-card { min-height: auto; display: grid; grid-template-columns: 48px 1fr; column-gap: 16px; padding: 20px; }
