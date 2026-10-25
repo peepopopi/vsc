@@ -162,10 +162,12 @@
     .hero-content { position: relative; z-index: 1; max-width: 720px; padding: 95px 0 115px; }
     .hero .eyebrow { color: #f4d296; }
     .hero h1 { max-width: 760px; margin: 23px 0 22px; font-size: clamp(3.7rem, 8vw, 6.4rem); line-height: .98; letter-spacing: -.035em; }
-    .hero h1 span { display: block; color: #edc579; font-style: italic; }
+    .hero h1 span { display: block; }
+    .hero h1 span:last-child { color: #edc579; font-style: italic; }
+    .hero-brand { margin: 18px 0 -7px; color: var(--terra); font: 700 clamp(4.255rem, 9.2vw, 7.36rem)/.98 var(--serif); letter-spacing: -.035em; }
     .hero-copy { max-width: 600px; margin-bottom: 30px; color: rgba(245,234,216,.97); font-size: 1.2rem; line-height: 1.75; }
     .hero-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; }
-    .hero-note { display: flex; align-items: center; gap: 12px; margin: 40px 0 0; color: rgba(245,234,216,.94); font-size: 1.08rem; }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin: 40px 0 0; color: #edc579; font-size: 1.19rem; }
     .hero-note::before { content: ""; width: 36px; height: 1px; background: var(--gold); }
     .hero-stamp {
       position: absolute; top: 34px; right: max(4vw, calc((100vw - var(--wrap))/2));
@@ -524,6 +526,7 @@
       .hero { min-height: min(760px, calc(100svh - 68px)); background-position: center; }
       .hero-content { padding: 78px 0 115px; }
       .hero h1 { font-size: clamp(3.35rem, 12vw, 5.1rem); }
+      .hero-brand { font-size: clamp(3.8525rem, 13.8vw, 5.865rem); }
       .hero-copy, .section-intro, .story-copy p, .roadside p, .contact-copy { font-size: 1.12rem; }
       .hero-stamp { top: 18px; right: 24px; width: 150px; min-height: 96px; padding: 12px 16px; font-size: .84rem; }
       .hero-stamp strong { font-size: 1rem; }
@@ -556,10 +559,11 @@
       .hero { min-height: min(690px, calc(100svh - 68px)); }
       .hero-content { padding: 38px 0 120px; }
       .hero h1 { margin: 18px 0 16px; font-size: clamp(2.55rem, 10.5vw, 3.25rem); }
+      .hero-brand { font-size: clamp(2.9325rem, 12.075vw, 3.7375rem); }
       .hero-copy { margin-bottom: 22px; font-size: 1rem; line-height: 1.55; }
       .hero-buttons { align-items: stretch; flex-direction: column; max-width: 310px; }
       .hero-buttons .button { width: 100%; }
-      .hero-note { max-width: 270px; margin-top: 22px; font-size: .95rem; }
+      .hero-note { max-width: 270px; margin-top: 22px; font-size: 1.045rem; }
       .hero-stamp { top: auto; right: 16px; bottom: 20px; width: 140px; min-height: 90px; padding: 10px 12px; font-size: .78rem; }
       .hero-stamp strong { font-size: .95rem; }
       .section-head h2, .story-copy h2, .roadside h2, .details h2, .contact h2 { font-size: 2.6rem; }
