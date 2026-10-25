@@ -250,7 +250,7 @@
     .memory-shot figcaption { position: absolute; z-index: 1; left: 20px; bottom: 18px; color: #fff0d8; font: 1.2rem var(--serif); }
 
     .benefits {
-      padding: 100px 0; color: var(--ink);
+      padding: 101px 0 100px; color: var(--ink);
       background:
         linear-gradient(rgba(28,39,30,.62), rgba(28,39,30,.67)),
         url("images/story-background.png") center 48%/cover;
@@ -534,7 +534,7 @@
       .story-grid { grid-template-columns: 1fr; gap: 37px; }
       .story-visual { min-height: 390px; max-width: 560px; }
       .story-visual img { height: 350px; }
-      .benefits { padding: 78px 0; }
+      .benefits { padding: 79px 0 78px; }
       .section-head { margin-bottom: 30px; }
       .trivia-bar { align-items: flex-start; flex-direction: column; padding: 20px; }
       .menu-top { align-items: flex-start; flex-direction: column; }
